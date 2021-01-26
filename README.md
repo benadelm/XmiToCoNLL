@@ -1,6 +1,6 @@
 # XmiToConll
 
-A tool, developed in the research project [hermA](https://www.herma.uni-hamburg.de/en.html), for creating a CoNLL-2012 file with a specific tokenization and the coreference information stored in an `.xmi` file, such as the those saved by  [CorefAnnotator](https://github.com/nilsreiter/CorefAnnotator). It is useful, for example, if a specific tokenization is required or if the tokenization produced by CorefAnnotator’s own CoNLL-2012 exporter is undesirable for some other reason.
+A tool, developed in the research project [hermA](https://www.herma.uni-hamburg.de/en.html), for creating a CoNLL-2012 file with a specific tokenization and the coreference information stored in an `.xmi` file, such as those saved by  [CorefAnnotator](https://github.com/nilsreiter/CorefAnnotator). It is useful, for example, if a specific tokenization is required or if the tokenization produced by CorefAnnotator’s own CoNLL-2012 exporter is undesirable for some other reason.
 
 This tool supports `.xmi` files as created by CorefAnnotator up to at least version 1.14.3 and should also be able to read `.xmi` files created by [Athen](https://www.informatik.uni-wuerzburg.de/is/open-source-tools/athen/) (not tested with the latest version).
 
@@ -23,9 +23,13 @@ The *coreference format specifier* can be
 * `ca` for `.xmi` files created by CorefAnnotator;
 * `at` for `.xmi` files created by Athen.
 
-See below for a description of how `.xmi` files are interpreted by the tool depending on the format.
+See *functionality details* below for a description of how `.xmi` files are interpreted by the tool depending on the format.
 
 Paths can be absolute or relative. Output files (fourth and fifth argument) will be created or overwritten.
+
+Dummy example for command line arguments:
+
+	ca coreference-annotations.xmi tokenization.txt output.conll output-entities.txt
 
 The tokenization input file is a UTF-8 plain text file with one token per line, sentences being separated by an empty line, for example:
 
@@ -72,7 +76,7 @@ Example:
 * entity 123 ends at this token (and started at an earlier one): `123)`
 * entity 123 comprises only this token (starts and ends here): `(123)`
 
-If no mention starts at a token, the coreference field is set to `_` (underscore).
+If a token is neither the start nor end of a mention, the coreference field is set to `_` (underscore).
 
 ## Information about the Entities
 
